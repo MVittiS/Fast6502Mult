@@ -1,1 +1,33 @@
-# Fast6502Mult
+Fast6502Mult
+============
+
+This project aims to assess the fastest way of multiplying two numbers on the 6502 architecture, on a standard, flat 64k address space (so no pre-calculated 8x8 multiplication table, though other kinds of tables are taken into account). Contibutions and suggestions are more than welcome!
+
+The speed will be judged initially by the average number of cycles required to perform all possible multiplies (so 64k for an 8x8 or 4.4x4.4 bit, 16M for 8.8x8.8 or 4.12x4.12 bit, and so on), with later histogram plots for number of required cycles. There are plans for later extensions to fixed-point math and perhaps some small, practical 3D demos using the 6502asm.com platform. Speed is a priority, but of course **correctness is a must**. Speed-size tradeoffs will be studied later, especially in regards to unrolled vs. looped code.
+
+Current project status
+----------------------
+
+| 8x8->16 bit   | Avg. Cycles  | Size [bytes] | Fully Tested |
+| ------------- |:------------:|:------------:|:------------:|
+| Naive Implementation Unrolled | ?? | ?? | NO |
+| Naive Implementation | ?? | ?? | NO |
+| Swapping argument with less zeroes using table | ?? | ?? | NO |
+| 4-bit chunk multiply unrolled | ?? | ?? | NO |
+| 4-bit chunk multiply | ?? | ?? | NO |
+| 4-bit rotation table | ?? | ?? | NO |
+| 4x4 bit precalc table | ?? | ?? | NO |
+
+TODOs
+-----
+
+* Settle on a toolkit for command-line compiling and testing code
+* Preparing R script for automatically generating histograms with tests
+* 4.4x4.4 -> 4.4 multiply
+* 8.8x8.8 -> 8.8 multiply
+* 4.12x4.12 -> 4.12 multiply
+* 4.4x0.8 -> 4.4 multiply
+* Sin/Cos table
+* Cube point table
+* Teapot point table
+* (crackpot idea) 8-way parallel multiply, implementing logic gates with instructions - start with 2x2x8, then 4x4x8, to finally 8x8x8. *Might* be faster than 8 separate multiplies…?
