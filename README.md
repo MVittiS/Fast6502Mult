@@ -3,7 +3,7 @@ Fast6502Mult
 
 This project aims to assess the fastest way of multiplying two numbers on the 6502 architecture, on a standard, flat 64k address space (so no pre-calculated 8x8 multiplication table, though other kinds of tables are taken into account). Contibutions and suggestions are more than welcome!
 
-The speed will be judged initially by the average number of cycles required to perform all possible multiplies (so 64k for an 8x8 or 4.4x4.4 bit, 16M for 8.8x8.8 or 4.12x4.12 bit, and so on), with later histogram plots for number of required cycles. There are plans for later extensions to fixed-point math and perhaps some small, practical 3D demos using the 6502asm.com platform. Speed is a priority, but of course **correctness is a must**. Speed-size tradeoffs will be studied later, especially in regards to unrolled vs. looped code.
+The speed will be judged initially by the average number of cycles required to perform all possible multiplies (so 64k for an 8x8 or 4.4x4.4 bit, 16M for 8.8x8.8 or 4.12x4.12 bit, and so on), with later histogram plots for number of required cycles. There are plans for later extensions to fixed-point math and perhaps some small, practical 3D demos using the [6502asm](www.6502asm.com) platform. Speed is a priority, but of course **correctness is a must**. Speed-size tradeoffs will be studied later, especially in regards to unrolled vs. looped code.
 
 Current project status
 ----------------------
@@ -22,6 +22,7 @@ TODOs
 -----
 
 * Settle on a toolkit for command-line compiling and testing code
+ * Leaning towards [x65](https://github.com/sakrac/x65) for assembly and [fake6502](http://rubbermallet.org/fake6502.c) for emulation
 * Preparing R script for automatically generating histograms with tests
 * 4.4x4.4 -> 4.4 multiply
 * 8.8x8.8 -> 8.8 multiply
