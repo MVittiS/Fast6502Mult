@@ -22,7 +22,7 @@ TODOs
 -----
 
 * Settle on a toolkit for command-line compiling and testing code
- * Leaning towards [x65](https://github.com/sakrac/x65) for assembly and [fake6502](http://rubbermallet.org/fake6502.c) for emulation
+  * Leaning towards [x65](https://github.com/sakrac/x65) for assembly and [fake6502](http://rubbermallet.org/fake6502.c) for emulation
 * Preparing R script for automatically generating histograms with tests
 * 4.4x4.4 -> 4.4 multiply
 * 8.8x8.8 -> 8.8 multiply
