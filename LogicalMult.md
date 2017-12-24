@@ -37,7 +37,7 @@ Using the same recurrence equation, we can try assembling an optimized circuit t
 
 ### SSA Form
 
-Inputs are R0~R3 for A operand, and R4~R7 for B operand.
+Inputs are R0 ~ R3 for A operand, and R4 ~ R7 for B operand.
 
 | Original SSA  | Register Optimized | Order Optimized |
 | ------------- | ------------------ | --------------- |
