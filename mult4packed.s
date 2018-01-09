@@ -115,18 +115,21 @@ mult4packed:
   lda p1
   or #$F0
   adc p0
+  sta p0
   lda p1
   or #$F
   adc p3
+  sta p3
 ; ...and finally we sum P2. Done!
   lda p2
   or #$F0
   adc p0
+  sta p0
   lda p2
   or #$F
   adc p3
-
-rts  
+  sta p3
+rts
 
 
 
