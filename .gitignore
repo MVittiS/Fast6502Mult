@@ -6,3 +6,6 @@ multNaive.bin
 test
 testMain.ll
 mult2x2.65l
+multNaive.bin.csv
+multNaive.bin.log.csv
+testMain
