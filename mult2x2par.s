@@ -5,11 +5,11 @@ loop:
   sta $0, x
   dex
   bpl loop
-  jsr mult22
+  jsr mult22par
 
   ldx #4
 loop2:
-  lda $fe
+  lda $0, x
   sta $200, x
   dex
   bpl loop2
