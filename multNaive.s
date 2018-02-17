@@ -22,15 +22,18 @@ multNaive:
     bcc @skip_round
     txa
     clc
-    adc $00
-    lda $02
-    adc $01
+    adc $0
+    sta $0
+    lda $2
+    adc $1
+    sta $1
     @skip_round:
     txa
     rol a
-    rol $02
+    rol $2
     tax
+    beq @endMult
     dec $3
-    lda $3
     bne @mul_round
+  @endMult:
   rts

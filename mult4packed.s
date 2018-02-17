@@ -3,8 +3,8 @@
 ; Modifies      :  $00 ~ $07
 ; Returns       :  $00 ~ $01 (little-endian)
 
-.inc mult44table.s
-.inc rot4table.s
+INC mult44table.s
+INC rot4table.s
 
 multA = $0
 multArot = $1
