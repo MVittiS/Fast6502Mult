@@ -3,6 +3,8 @@
 ; Modifies      :  $00 ~ $03
 ; Returns       :  $00 ~ $01 (little-endian)
 
+BASE $200
+
 multNaive:
    ; We first clear the space occupied by the temp variables.
   lda #0
@@ -13,22 +15,22 @@ multNaive:
   sta $3
 
   ; Now, we iterate this loop for all 8 rounds of multiplication.
-  mul_round:
+  @mul_round:
     tya
     lsr
     tay
-    bcc skip_round
+    bcc @skip_round
     txa
     clc
     adc $00
     lda $02
     adc $01
-    skip_round:
+    @skip_round:
     txa
     rol a
     rol $02
     tax
     dec $3
     lda $3
-    bnz mul_round
+    bne @mul_round
   rts
