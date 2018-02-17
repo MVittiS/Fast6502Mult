@@ -21,6 +21,11 @@ void write6502(uint16_t address, uint8_t value){
     ram[address] = value;
 }
 
+typedef struct CPUstate {
+    uint8_t a, x, y, z[256];
+    uint32_t nCycles;
+} CPUstate;
+
 int main(int argc, char **args) {
     reset6502();
     printf("Cycles executed: %u\n", clockticks6502);
