@@ -3,9 +3,6 @@
 ; Modifies      :  $00 ~ $07
 ; Returns       :  $00 ~ $01 (little-endian)
 
-INC mult44table.s
-INC rot4table.s
-
 multA = $0
 multArot = $1
 multB = $2
@@ -41,17 +38,19 @@ p3 = $1
 ;
 ; And we're good to go.
 
+BASE $200
+
 mult4packed:
 ; We first start by getting the arguments from the registers, and getting
 ;  their rotated equivalents.
-  stx $mutlA ; First multiplicand
-  lda (rot4table, x)
-  sta $multArot ; First multiplicand, rotated  
-  sty $multB ; Second multiplicand
+  stx multA ; First multiplicand
+  lda rot4table, x
+  sta multArot ; First multiplicand, rotated  
+  sty multB ; Second multiplicand
   tya
   tax
-  lda (rot4table, x)
-  sta $multBrot ; Second multiplicand, rotated
+  lda rot4table, x
+  sta multBrot ; Second multiplicand, rotated
 
 ; Then, we extract the four ingredients we'll need:
 ;  A high, RotA high, B low, and RotB low.
@@ -71,19 +70,19 @@ mult4packed:
 ;  element already in the accumulator - P0. The rest follows.
 
 ; P0
-  or multBlow
+  ora multBlow
   sta p0
 ; P1
   lda multAhigh
-  or multBlow
+  ora multBlow
   sta p1
 ; P2
   lda multArothigh
-  or multBrotlow
-  sta P2
+  ora multBrotlow
+  sta p2
 ; P3
   lda multAhigh
-  or multBrotlow
+  ora multBrotlow
   sta p3
 
 ; Finally, we use the partial products as arguments in a look-up
@@ -91,21 +90,23 @@ mult4packed:
 
 ; P0
   ldx p0
-  lda (mult44table, x)
+  lda mult44table, x
   sta p0
 ; P1, rotated
   ldx p1
-  ldx (mult44table, x)
-  lda (rot4table, x)
+  lda mult44table, x
+  tax
+  lda rot4table, x
   sta p1
 ; P2, rotated
   ldx p2
-  ldx (mult44table, x)
-  lda (rot4table, x)
+  lda mult44table, x
+  tax
+  lda rot4table, x
   sta p2
 ; P3
   ldx p3
-  lda (mult44table, x)
+  lda mult44table, x
   sta p3
 
 ; The products P0 and P3 are ready, and we just have to decompose
@@ -113,24 +114,26 @@ mult4packed:
   clc
 ; First we sum P1...
   lda p1
-  or #$F0
+  ora #$F0
   adc p0
   sta p0
   lda p1
-  or #$F
+  ora #$F
   adc p3
   sta p3
 ; ...and finally we sum P2. Done!
   lda p2
-  or #$F0
+  ora #$F0
   adc p0
   sta p0
   lda p2
-  or #$F
+  ora #$F
   adc p3
   sta p3
 rts
 
-
+ALIGN 256
+INCLUDE mult44table.s
+INCLUDE rot4table.s
 
 

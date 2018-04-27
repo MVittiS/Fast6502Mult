@@ -43,8 +43,8 @@ int main(int argc, char **args) {
     char dumpFileName[256];
     strcpy(outputFileName, args[1]);
     strcpy(dumpFileName, args[1]);
-    strcat(outputFileName, ".csv");
-    strcat(dumpFileName, ".log.csv");
+    strcat(outputFileName, ".cycles.csv");
+    strcat(dumpFileName, ".execLog.csv");
     FILE *output = fopen(outputFileName, "w");
     FILE *dump = fopen(dumpFileName, "w");
     fprintf(dump, "Address,A,X,Y,P,R0,R1,R2,R3\n");
@@ -57,13 +57,18 @@ int main(int argc, char **args) {
             x = rX;
             y = rY;
             
-            for (int c = 0; c < limit; c++) {
+            int c;
+            for (c = 0; c < limit; c++) {
                 fprintf(dump, "%04x,%02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x\n", pc, a, x, y, status, ram[0], ram[1], ram[2], ram[3]);
 
                 step6502();
                 if (pc == 0x200 + binSize - 1) {
                     break;
                 }
+            }
+
+            if (c == limit) {
+                printf("Error: infinite loop.\nLast PC: %ux\nX: %u, Y: %u\n", pc, rX, rY);
             }
 
             fprintf(dump, "\n");
