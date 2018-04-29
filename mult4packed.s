@@ -56,7 +56,7 @@ mult4packed:
 ;  A high, RotA high, B low, and RotB low.
   and #$F
   sta multBrotlow
-  lda multBrot
+  lda multB
   and #$F
   sta multBlow
   lda multA
@@ -66,46 +66,36 @@ mult4packed:
   and #$F0
   sta multArothigh
 
-; Now, we assemble our partial products, starting with the with an
+; Now, we assemble our partial products, starting with an
 ;  element already in the accumulator - P0. The rest follows.
-
-; P0
-  ora multBlow
-  sta p0
-; P1
-  lda multAhigh
-  ora multBlow
-  sta p1
-; P2
-  lda multArothigh
-  ora multBrotlow
-  sta p2
-; P3
-  lda multAhigh
-  ora multBrotlow
-  sta p3
-
 ; Finally, we use the partial products as arguments in a look-up
 ;  multiplication table, and start building our products.
 
 ; P0
-  ldx p0
+  ora multBlow
+  tax
   lda mult44table, x
   sta p0
-; P1, rotated
-  ldx p1
+; P1
+  lda multAhigh
+  ora multBlow
+  tax
   lda mult44table, x
   tax
   lda rot4table, x
   sta p1
-; P2, rotated
-  ldx p2
+; P2
+  lda multArothigh
+  ora multBrotlow
+  tax
   lda mult44table, x
   tax
   lda rot4table, x
   sta p2
 ; P3
-  ldx p3
+  lda multAhigh
+  ora multBrotlow
+  tax
   lda mult44table, x
   sta p3
 
@@ -114,20 +104,20 @@ mult4packed:
   clc
 ; First we sum P1...
   lda p1
-  ora #$F0
+  and #$F0
   adc p0
   sta p0
   lda p1
-  ora #$F
+  and #$F
   adc p3
   sta p3
 ; ...and finally we sum P2. Done!
   lda p2
-  ora #$F0
+  and #$F0
   adc p0
   sta p0
   lda p2
-  ora #$F
+  and #$F
   adc p3
   sta p3
 rts
