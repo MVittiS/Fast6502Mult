@@ -6,6 +6,8 @@
 ; Ideas:
 ; * Test if fallthrough code for Y register can speed-up operations!
 
+BASE $200
+
 multNaiveUnrolled:
    ; We first clear the space occupied by the temp variables.
   lda #0
@@ -14,123 +16,25 @@ multNaiveUnrolled:
   sta $02
    
    ; Now, we iterate this loop for all 8 rounds of multiplication.
-  mul_round1:
-  tya
-  lsr
-  tay
-  bcc skip_round1
-  stx $00
-  skip_round1:
-  txa
-  rol a
-  rol $02
-  tax
-
-  mul_round2:
-  tya
-  lsr
-  tay
-  bcc skip_round2
-  txa
-  clc
-  adc $00
-  lda $02
-  adc $01
-  skip_round2:
-  txa
-  rol a
-  rol $02
-  tax
-
-  mul_round3:
-  tya
-  lsr
-  tay
-  bcc skip_round3
-  txa
-  clc
-  adc $00
-  lda $02
-  adc $01
-  skip_round3:
-  txa
-  rol a
-  rol $02
-  tax
-
-  mul_round4:
-  tya
-  lsr
-  tay
-  bcc skip_round4
-  txa
-  clc
-  adc $00
-  lda $02
-  adc $01
-  skip_round4:
-  txa
-  rol a
-  rol $02
-  tax
-
-  mul_round5:
-  tya
-  lsr
-  tay
-  bcc skip_round5
-  txa
-  clc
-  adc $00
-  lda $02
-  adc $01
-  skip_round5:
-  txa
-  rol a
-  rol $02
-  tax
-
-  mul_round6:
-  tya
-  lsr
-  tay
-  bcc skip_round6
-  txa
-  clc
-  adc $00
-  lda $02
-  adc $01
-  skip_round6:
-  txa
-  rol a
-  rol $02
-  tax
-
-  mul_round7:
-  tya
-  lsr
-  tay
-  bcc skip_round7
-  txa
-  clc
-  adc $00
-  lda $02
-  adc $01
-  skip_round7:
-  txa
-  rol a
-  rol $02
-  tax
-
-  mul_round8:
-  tya
-  lsr
-  tay
-  bcc skip_round8
-  txa
-  clc
-  adc $00
-  lda $02
-  adc $01
-  skip_round8:
+  REPT 8
+    tya
+    lsr
+    tay
+    bcc @skip_round
+    txa
+    clc
+    adc $0
+    sta $0
+    lda $2
+    adc $1
+    sta $1
+    @skip_round:
+    txa
+    rol a
+    rol $2
+    tax
+    ;tya
+    ;beq endMult
+  ENDR
+  endMult:
   rts

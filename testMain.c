@@ -80,8 +80,8 @@ int main(int argc, char **args) {
     }
     fprintf(dump, ",Opcode\n");
     
-    for (int rX = 0x1; rX < 256; rX++) {
-        for (int rY = 0x1; rY < 256; rY++) {
+    for (int rX = 0; rX < 256; rX++) {
+        for (int rY = 0; rY < 256; rY++) {
             const int limit = 4096;
             reset6502();
             pc = 0x200;

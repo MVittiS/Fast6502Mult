@@ -8,27 +8,27 @@ The speed will be judged initially by the average number of cycles required to p
 Current project status
 ----------------------
 
-| 8x8->16 bit   | Avg. Cycles  | Size [bytes] | Fully Tested |
-| ------------- |:------------:|:------------:|:------------:|
-| Naive Implementation Unrolled | ?? | ?? | NO |
-| Naive Implementation | ?? | ?? | NO |
-| Swapping argument with less zeroes using table | ?? | ?? | NO |
-| 4-bit chunk multiply unrolled | ?? | ?? | NO |
-| 4-bit chunk multiply | ?? | ?? | NO |
-| 4-bit rotation table | ?? | ?? | NO |
-| 4x4 bit precalc table | ?? | ?? | NO |
+| 8x8->16 bit   | Avg. Cycles  | Max Cycles   | Min Cycles   | Size [bytes] |
+| ------------- |:------------:|:------------:|:------------:|:------------:|
+| Naive Implementation | 305.25 | 409 | 41 | 42 |
+| Naive Implementation Unrolled | 249 | 321 | 177 | 185 |
+| Swapping argument with less zeroes using table | ?? | ?? | ?? | ?? |
+| 4-bit chunk multiply unrolled | ?? | ?? | ?? | ?? |
+| 4-bit chunk multiply | ?? | ?? | ?? | ?? |
+| 4-bit rotation table | ?? | ?? | ?? | ?? |
+| 4x4 bit precalc + rotation table | 174 | 174 | 174 | 768 |
 
 TODOs
 -----
 
-* Settle on a toolkit for command-line compiling and testing code
-  * Decided on [asm6](http://www.romhacking.net/utilities/674/) for assembly and [fake6502](http://rubbermallet.org/fake6502.c) for emulation
-* Preparing R script for automatically generating histograms with tests
-* 4.4x4.4 -> 4.4 multiply
-* 8.8x8.8 -> 8.8 multiply
-* 4.12x4.12 -> 4.12 multiply
-* 4.4x0.8 -> 4.4 multiply
-* Sin/Cos table
-* Cube point table
-* Teapot point table
-* (crackpot idea) 8-way parallel multiply, implementing logic gates with instructions - start with 2x2x8, then 4x4x8, to finally 8x8x8. *Might* be faster than 8 separate multiplies…?
+[*] Settle on a toolkit for command-line compiling and testing code
+  [*] Decided on [asm6](http://www.romhacking.net/utilities/674/) for assembly and [fake6502](http://rubbermallet.org/fake6502.c) for emulation
+[ ] Preparing R script for automatically generating histograms with tests
+[ ] 4.4x4.4 -> 4.4 multiply
+[ ] 8.8x8.8 -> 8.8 multiply
+[ ] 4.12x4.12 -> 4.12 multiply
+[ ] 4.4x0.8 -> 4.4 multiply
+[ ] Sin/Cos table
+[ ] Cube point table
+[ ] Teapot point table
+[ ] (crackpot idea) 8-way parallel multiply, implementing logic gates with instructions - start with 2x2x8, then 4x4x8, to finally 8x8x8. *Might* be faster than 8 separate multiplies…?
