@@ -10,12 +10,10 @@ Current project status
 
 | 8x8->16 bit   | Avg. Cycles  | Max Cycles   | Min Cycles   | Size [bytes] |
 | ------------- |:------------:|:------------:|:------------:|:------------:|
-| Naive Implementation | 305.25 | 409 | 41 | 42 |
+| Naive Implementation | 317 | 389 | 245 | 39 |
+| Naive Implementation w/ Early Exit | 305.25 | 409 | 41 | 42 |
 | Naive Implementation Unrolled | 249 | 321 | 177 | 185 |
-| Swapping argument with less zeroes using table | ?? | ?? | ?? | ?? |
-| 4-bit chunk multiply unrolled | ?? | ?? | ?? | ?? |
-| 4-bit chunk multiply | ?? | ?? | ?? | ?? |
-| 4-bit rotation table | ?? | ?? | ?? | ?? |
+| Swapping argument with less zeroes using table | ?? | ?? | ?? | 512 |
 | 4x4 bit precalc + rotation table | 174 | 174 | 174 | 768 |
 
 TODOs

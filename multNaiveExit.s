@@ -32,6 +32,11 @@ multNaive:
     rol a
     rol $2
     tax
+    ; Those are the two only extra instructions from
+    ;  multNaive.s; they perform the early exit in
+    ;  case Y gets to zero.
+    tya
+    beq @endMult
     dec $3
     bne @mul_round
   @endMult:
