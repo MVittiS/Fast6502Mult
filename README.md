@@ -19,13 +19,13 @@ Current project status
 TODOs
 -----
 
-[x] Settle on a toolkit for command-line compiling and testing code
-[ ] Preparing R script for automatically generating histograms with tests
-[ ] 4.4x4.4 -> 4.4 multiply
-[ ] 8.8x8.8 -> 8.8 multiply
-[ ] 4.12x4.12 -> 4.12 multiply
-[ ] 4.4x0.8 -> 4.4 multiply
-[ ] Sin/Cos table
-[ ] Cube point table
-[ ] Teapot point table
-[ ] (crackpot idea) 8-way parallel multiply, implementing logic gates with instructions. *Might* be faster than 8 separate multiplies…?
+- [x] Settle on a toolkit for command-line compiling and testing code
+- [ ] Preparing R script for automatically generating histograms with tests
+- [ ] 4.4x4.4 -> 4.4 multiply
+- [ ] 8.8x8.8 -> 8.8 multiply
+- [ ] 4.12x4.12 -> 4.12 multiply
+- [ ] 4.4x0.8 -> 4.4 multiply
+- [ ] Sin/Cos table
+- [ ] Cube point table
+- [ ] Teapot point table
+- [ ] (crackpot idea) 8-way parallel multiply, implementing logic gates with instructions. *Might* be faster than 8 separate multiplies…?
