@@ -19,8 +19,7 @@ Current project status
 TODOs
 -----
 
-[x] Settle on a toolkit for command-line compiling and testing code
-  [x] Decided on [asm6](http://www.romhacking.net/utilities/674/) for assembly and [fake6502](http://rubbermallet.org/fake6502.c) for emulation
+[x] Settle on a toolkit for command-line compiling and testing code - Decided on [asm6](http://www.romhacking.net/utilities/674/) for assembly and [fake6502](http://rubbermallet.org/fake6502.c) for emulation
 [ ] Preparing R script for automatically generating histograms with tests
 [ ] 4.4x4.4 -> 4.4 multiply
 [ ] 8.8x8.8 -> 8.8 multiply
