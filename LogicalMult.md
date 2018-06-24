@@ -30,7 +30,7 @@ Inputs are R0, R1, R2, and R3, containing A0, A1, B0, and B1, respectively. Ampe
 | R10 = R7 & R9 |    R0 = R1 & R2    |  R0 = R1 & R2   |
 | R11 = R7 ^ R9 |    R2 = R1 ^ R2    |  R2 = R1 ^ R2   |
 
-The outputs are in [R4 R8 R10 R11] for the original SSA, or [R4 R3 R0 R2] for the optimized lists. The second pass (order optimization) is needed because the 6502 needs two cycles to read contents into the accumulator; if we can reuse results from the immediate last operation, we save those cycles.
+The outputs are in [R4 R8 R10 R11] for the original SSA, or [R4 R3 R0 R2] for the optimized lists. The second pass (order optimization) is needed because the 6502 needs two cycles to read "registers" (zero-page memory contents, or the first 256 bytes in RAM) into the accumulator; if we can reuse results from the immediate last operation, we save those cycles.
 
 ## 4x4->8 bit
 
